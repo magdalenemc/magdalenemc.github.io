@@ -47,10 +47,12 @@
             }
 
             /* main container area beneath menu */
-            main {
+          [class=cointainer] {
                 background: rgb(211,211,211);
                 display: flex;
-                border-radius: 15px;
+                border: 5px solid;
+                border-radius: 2px;
+                align-items: center;
             }
             [class=sidebar] {
                 margin-right: 25px;
@@ -60,14 +62,36 @@
                 width: 200px;
                 border: 5px solid;
             }
-            [class=content] {
+            [class=personal-content] {
+                flex: 1;
+                padding: 5px;
+            }
+            [class=container2] {
+                background: rgb(211,211,211);
+                display: flex;
+                border-radius: 2px;
+            }
+            [class=professional-content] {
                 flex: 1;
                 padding: 15px;
+                border: 5px solid;
+                border-radius: 15px;
             }
             [class=interests] header {
                 font-size: 1.25em;
             }
+            button {
+                border-radius: 5px;
+            }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("ul").toggle();
+                });
+            });
+</script>
     </head>
     
     <body>
@@ -79,25 +103,39 @@
                 </ul>
             </nav>
             
-            <main>
+            <div class="container">
                 <div class="sidebar">
                     <img src="http://ventureforamerica.org/wp-content/uploads/Magdalene-McArthur-e1470163838324-500x500.jpg">
                 </div>
-                
-                <div class="content">
+           
+                <div class="personal-content">
                     <header>Magdalene McArthur</header>
                         <p>Instructor at Operation Spark</p>
                         <section class="interests">
                             <header>Interests</header>
                             <ul>
-                                <li>Coding</li>
+                                <li>Traveling</li>
                                 <li>Reading</li>
                                 <li>Cooking</li>
                             </ul>
                         </section>
                 </div>
-            </main>
-        </div>
+            </div>
+            
+            <div class="container2">
+                <div class="professional-content">
+                    <header>Professional Interests</header>
+                        <section class="interests">
+                            <br>
+                            <button>Click Here to See My Interests!</button>
+                            <ul>
+                                <li>JavaScript Web Development</li>
+                                <li>Data Science</li>
+                                <li>Analyzing data using Python</li>
+                            </ul>
+                        </section>
+                </div>
+            </div>
+         </div>
     </body>
-    
 </html>
