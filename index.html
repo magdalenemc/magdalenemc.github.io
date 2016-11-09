@@ -47,20 +47,20 @@
             }
 
             /* main container area beneath menu */
-          [class=cointainer] {
+            .container {
                 background: rgb(211,211,211);
                 display: flex;
                 border: 5px solid;
-                border-radius: 2px;
+                border-radius: 15px;
                 align-items: center;
+                margin-bottom: 10px;
             }
             [class=sidebar] {
                 margin-right: 25px;
-                padding: 10px;
+                padding: 5px;
             }
             [class=sidebar] img {
                 width: 200px;
-                border: 5px solid;
             }
             [class=personal-content] {
                 flex: 1;
@@ -69,7 +69,7 @@
             [class=container2] {
                 background: rgb(211,211,211);
                 display: flex;
-                border-radius: 2px;
+                border-radius: 15px;
             }
             [class=professional-content] {
                 flex: 1;
@@ -88,7 +88,7 @@
         <script>
             $(document).ready(function(){
                 $("button").click(function(){
-                    $("ul").toggle();
+                    $("ul.professional-interests").toggle();
                 });
             });
 </script>
@@ -128,7 +128,7 @@
                         <section class="interests">
                             <br>
                             <button>Click Here to See My Interests!</button>
-                            <ul>
+                            <ul class="professional-interests">
                                 <li>JavaScript Web Development</li>
                                 <li>Data Science</li>
                                 <li>Analyzing data using Python</li>
