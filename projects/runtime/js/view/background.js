@@ -84,7 +84,7 @@
             if(backgroundBox.x < -100) {
                  backgroundBox.x = canvasWidth;
             }  */
-            for (var i = 0; i <= buildings.length; i++){
+            for (var i = 0; i < buildings.length; i++){
                 buildings[i].x = buildings[i].x -1;
                 if(buildings[i].x < - 100) {
                     buildings[i].x = canvasWidth;
