@@ -57,7 +57,7 @@
             backgroundBox = draw.rect(100,100,'Blue');
             backgroundBox.x = 500;
             backgroundBox.y = groundY - 80;
-            //background.addChild(backgroundBox);
+            background.addChild(backgroundBox);
             
             var buildingHeight = 300;
             var building;
@@ -80,16 +80,15 @@
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
-            /*backgroundBox.x = backgroundBox.x - 1;
+            backgroundBox.x = backgroundBox.x - 1;
             if(backgroundBox.x < -100) {
                  backgroundBox.x = canvasWidth;
-            }  */
+            }  
             for (var i = 0; i < buildings.length; i++){
                 buildings[i].x = buildings[i].x -1;
                 if(buildings[i].x < - 100) {
                     buildings[i].x = canvasWidth;
                 }
-                
             }
             
         }

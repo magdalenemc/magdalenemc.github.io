@@ -2,6 +2,10 @@
 $(document).ready(function() {
     $.getJSON('data.json', function (data) {
         // YOUR CODE BELOW HERE //
+        
+        
+        
+        
         $('#section-quotes').css('background-color', 'grey').css('border-radius', '4px');
         let $section = $('<section>').attr('id', 'section-rider');
         $section.append($('<h3>').text('Billy\'s Rider')).appendTo($('#sections'));

@@ -95,13 +95,13 @@
                         
                        if ( circle.x > canvas.width + circle.radius ) {
                            circle.x = 0;
-                        } else if ( circle.x <= 0) {
-                           circle.x = canvas.width; 
+                        } else if (circle.x < 0 ) {
+                          circle.x = canvas.width;
                         }
                         
-                        if ( circle.y > canvas.height + circle.radius ) {
-                           circle.y = 0;
-                        } else if ( circle.y <= 0 ) {
+                        if (circle.y > canvas.height + circle.radius ) {
+                          circle.y = 0;
+                        } else if (circle.y < 0  ) {
                            circle.y = canvas.height;
                         }
                         
