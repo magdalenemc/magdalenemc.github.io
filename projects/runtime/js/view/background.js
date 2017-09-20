@@ -38,17 +38,17 @@
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
             var backgroundFill = draw.rect(canvasWidth,canvasHeight,'black');
-            background.addChild(backgroundFill);
+            background.addChild(backgroundFill); 
             
             for(var i=0;i<100;i++) {
             circle = draw.circle(10,'white','LightGray',2);
             circle.x = canvasWidth*Math.random();
             circle.y = canvasHeight*Math.random();
-            background.addChild(circle);
+             background.addChild(circle);
             }
             
             var moon = draw.bitmap('img/moon.png');
-            moon.x = 300;
+          moon.x = 300;
             moon.y = 25;
             moon.scaleX = 2.0;
             moon.scaleY = 2.0;
@@ -76,6 +76,14 @@
         // called on each timer "tick" - 60 times per second
         function update() {
             // useful variables
+
+
+
+
+
+
+
+
             var canvasWidth = app.canvas.width;
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
