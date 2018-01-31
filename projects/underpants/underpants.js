@@ -25,7 +25,9 @@ window._ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function(value){
+    return value;
+};
 
 /** _.typeOf()
 * Arguments:
@@ -46,7 +48,17 @@ window._ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function(value){
+    if(Array.isArray(value)){
+        return "array";
+    } else if (value === undefined){
+        return "undefined";        
+    } else if(value === null) {
+        return "null";
+    } else {
+        return typeof value;
+    }
+};
 
 /** _.first()
 * Arguments:
@@ -98,7 +110,17 @@ window._ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)}); 
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func){
+    if(Array.isArray(collection)){
+        for(var i = 0; i < collection.length; i++){
+            func(collection[i],i,collection);
+        }
+    } else {
+        for(var key in collection) {
+            func(collection[key], key, collection);
+        }
+    }
+};
 
 /** _.indexOf()
 * Arguments:
@@ -133,6 +155,18 @@ window._ = {};
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func) {
+    var newArr = [];
+    _.each(array,function(element,index,array){
+        if(func(element,index,array) === true){
+            newArr.push(element);
+        };
+        
+    })
+    
+    
+    return newArr;
+};
 
 /** _.reject()
 * Arguments:

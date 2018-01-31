@@ -5,6 +5,8 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 
+<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
 	<!-- BEGIN CSS -->
 	<style>
 		/* TODO 1 */
@@ -30,6 +32,7 @@
 	<script>
 		(function(){
 			'use strict'
+			/* global &*/
 
 			// Variable declarations
 			var box;
@@ -42,38 +45,17 @@
 			boardWidth = $('.board').width();
 
 			// TODO 2
-			var position;
-			var points;
-			var speed;
-			var direction;
-			
-			direction = 1;
-			position = 0;
-			points = 0;
-			speed = 10;
 
-			box.css('left', position);
-			box.text(points);
-			
+
 			// TODO 3 / 4
 			update = function() {
-				position = position + (speed * direction);
-    			if(position > boardWidth) {
-    				 direction = -1;
-    			}
-    			else if (position < 0) {
-    				direction = 1;
-    			}
-    		box.css('left', position);
-    		box.text(points);
+
 			};
 
 
 			// TODO 5 / 6
 			handleBoxClick = function() {
-				speed = speed + 3;
-				position = 0;
-				points = points + 1;
+
 			};
 
 

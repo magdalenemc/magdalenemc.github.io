@@ -9,10 +9,20 @@ We're going to create a simple game where a box moves across the screen at an in
 Our goal for this game is to learn how to bring together HTML, CSS, and JavaScript. We use HTML to define our structure, CSS to define the style of that structure, and JavaScript in order to implement behavior. One of the primary ways we can implement behavior in JavaScript is by making modifications to the HTML and CSS in response to **events** which we will demonstrate by making this simple game. 
 
 ## Let's get started
+* Make sure your github and cloud9 accounts are linked to Greenlight
+* Open your first website workspace
+* go to your bash terminal (located at the bottom of the cloud9 workspace) and enter the command **os install**
+* use your arrow keys to scroll to bouncing-box and hit enter
+* type in Y and hit enter
+* you will be editing the index.html file
 
-* Visit Cloud 9
-* Create an HTML5 workspace
-* Click the 'Start Editing' button
+NOTE 1: If you receive an error that says os install command not found
+* enter the command ``` npm install -g opspark ``` and try again
+
+NOTE 2: If you are asked to enter your credentials
+* Type in your github username and hit enter
+* Type in Y and hit enter
+* Type in your password and hit enter. It won't look like you're typing but it's just hiding your text. It may ask you again and give an error but after that os install will work
 
 ## A note about jQuery
 
@@ -64,17 +74,17 @@ Declare and initialize `position` and `points` variables to zero
     points = 0;
     speed = 10;
 
-Now add the following code under `TODO 2`
+Below these variables add: 
     
     box.css('left', position);
 
-Now change the value of the `position` variable and watch the box move
+The .css() function changes the `left` css property of our box to the value held in our position variable. This property controls how far from the left side of the screen our box is. Change the value of the `position` variable and watch the box move.
 
-JavaScript lets us change HTML as well. Add the following JavaScript code under `TODO 2`
+Below that add:
 
     box.text(points);
 
-Change the `points` variable and watch how it changes the box. 
+The .text() function changes the text content between our box's `<div class="box"></div>` tags. Change the `points` variable and watch how it changes the box. 
 
 Before we move on, lets reset those variables to their starting values
 
@@ -88,11 +98,11 @@ You can create animation on a web page by changing the appearance of an object o
 
 The `setInterval` function allows us to setup a timer, where we call a function every so often. **How often**, the time between function calls, is called the interval. That interval is expressed in milliseconds, or thousandths of a second. 
 
-The following code:
+The following code (It's already there so you don't need to copy/paste this):
     
     setInterval(update, 50);
 
-Calls our `update` function ever 50 milliseconds, which is about 20 times per second. 
+Calls our `update` function every 50 milliseconds, which is about 20 times per second. 
 
 To animate the box, add the following code to the update function
 
@@ -111,7 +121,7 @@ Each time we call the `update` function the position variable gets larger and la
         position = 0;
     }
 
-Your `update` function should look like this:
+Your entire `update` function should look like this:
 
     update = function() {
         position = position + speed;
@@ -129,7 +139,7 @@ An event is just a particular thing that has happened. Some examples of **events
 - The user clicking on something
 - the web page has finished loading
 
-JavaScript allows us to change the web page in response to **events**. The following code calls the `handleBoxClick` function every time the box is clicked. 
+JavaScript allows us to change the web page in response to **events**. The following code calls the `handleBoxClick` function every time the box is clicked. **(It's already there so you do not need to copy/paste this)**
 
     box.on('click', handleBoxClick);
 
@@ -154,7 +164,7 @@ and then add the following code to the `update` function
 
 What's going on here?
 
-### TODO 7: Make It Bounce
+### TODO 7: Add Direction
 
 So we have the box loop accross the screen, but don't we want it to bounce off of the walls?
 Well, at least we want to make it look that way.
@@ -164,15 +174,15 @@ Right now our motion comes from the following line in the `update` function:
 
     position = position + speed;
     
-Since `speed` is positive, `position` keeps getting bigger, so to make the box 
-move the other way we need to subtract the speed instead of adding it.
-To do this we can add a variable `direction` that will tell us 
-whether to add or subract the speed. Let's declare and initialize it up top:
+Since `speed` is positive, `position` keeps getting bigger and moves to further from the left. To make the box 
+move the other way we need to subtract the speed instead of adding it. We can do this by multiplying speed by -1 when we want it to move left and 1 when we want it to move to the right. 
+
+Add a variable `direction` that will tell us whether to add or subract the speed. **Do this just below the other variable declarations**
 
     var direction;
     direction = 1;
     
-Now we modify the `update` function to be as follows:
+Now in the `update` function we want to re-assign the value of position like so:
 
     position = position + (speed * direction);
     
@@ -180,16 +190,25 @@ When `direction` is set to 1 then this increases the position by `speed`,
 sending the box to the right.  But when `direction` is set to -1,
 the speed is subracted from the position, sending the box to the left.
 
-Lastly, we need to change the bounds-check in the `update` function:
+### TODO 8: Make it Bounce
+
+## We need to decide when to change the direction: Conditionals!
+
+In our `update` function we have this if statement to make sure our box doesn't go off the right side of the screen. It says: If the position of my box moves past the right side of the board, move my box back to position 0.
 
     if(position > boardWidth) {
         position = 0;
     }
     
-so that instead of looping to position 0 we change the direction to -1.
-Do this and confirm that the box bounces off the right wall.
-However, you will need to add another bounds-check (if...) to make the box bounce
-off the left wall.  Do this yourself!
+ 
+We need to change this bounds-check so that instead of resetting the position of our box to 0 we change the direction to -1.
+Do this and confirm that the box bounces off the right wall. It should look like this:
+
+    if(position > boardWidth) {
+        direction = -1;
+    }
+    
+Now that your box bounces off the right wall you'll need to make it bounce off the left wall. What will be the condition? What do we want to do if that condition is true? Do this yourself!
 
 ####Hint: At what position value do you want the box to "bounce" off the left wall?
 
