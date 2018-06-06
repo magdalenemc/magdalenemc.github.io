@@ -22,16 +22,31 @@ Also at: http://bit.ly/op-spark-circularity
       - [TODO 1 : Declare Our Variables](#todo-1--declare-our-variables)
     - [Variable Initialization](#variable-initialization)
       - [TODO 2 : Initialize The Counter and Circles Array](#todo-2--initialize-the-counter-and-circles-array)
-      - [TODO 3 : Generate a Randomized Circle](#todo-3--generate-a-randomized-circle)
+      - [TODO 3 : Create a for loop](#todo-3--create-a-for-loop)
+      - [TODO 4 : Generate a Randomized Circle](#todo-4--generate-a-randomized-circle)
     - [Run the App](#run-the-app)
     - [Update our Variables](#update-our-variables)
-      - [TODO 4 : Access The Current Circle from the Circles Array Array](#todo-4--access-the-current-circle-from-the-circles-array)
-      - [TODO 5 : Update the Position of the Circle](#todo-5--update-the-position-of-the-circle)
-      - [TODO 6 : Keep The Current Circle Within the Bounds of the Canvas](#todo-6--keep-the-current-circle-within-the-bounds-of-the-canvas)
+      - [TODO 5 : Access The Current Circle from the Circles Array Array](#todo-5--access-the-current-circle-from-the-circles-array)
+      - [TODO 6 : Update the Position of the Circle](#todo-6--update-the-position-of-the-circle)
+      - [TODO 7 : Keep The Current Circle Within the Bounds of the Canvas](#todo-7--keep-the-current-circle-within-the-bounds-of-the-canvas)
   - [Just Code TODOs](#just-code-todos)
   - [Just Code TODOs in Google Presentation](#just-code-todos-in-google-presentation)
 
-## Installation
+## Installation 
+
+## Let's get started - installing bouncing box with `os install`
+NOTE: If you receive an error that says, `os install command not found` the opspark CLI is not installed. To install it, enter the command `npm intall -g opspark` in your bash terminal. 
+
+* Make sure your github and cloud9 accounts are linked to Greenlight
+* Open your first website workspace
+* go to your bash terminal (located at the bottom of the cloud9 workspace) and type in the command **os install**. Hit enter.
+* If prompted, login with your github credentials
+* Use your arrow keys to highlight your course and hit enter. hit enter again to confirm.
+* Use your arrow keys to highlight bouncing-box and hit enter. hit enter again to confirm.
+* open up the index.html file and press Run at the top of your workspace. You will be editing this file.
+
+
+## (SKIP IF ALREADY INSTALLED) Installation without 'os install'
 
 Create a new Cloud9 workspace and clone the project from github.com:
 
@@ -80,7 +95,7 @@ Some concepts you'll learn are:
 * Leveraging the power of built-in and 3rd party API (DRY), like Math and opspark-draw.
 * Variable declaration and initialization.
 * Function invocation and passing arguments to functions.
-* The while and for loop.
+* The for loop.
 * Conditional statements - making decisions in code.
 * Recognizing code blocks.
 * Calculating coordinates in a cartesian system.
@@ -142,26 +157,31 @@ Every programming language comes with features built-in to help you implement re
 
 JavaScript comes with a number of built in loops, like `for` `for-in` and `while`, and many 3rd party libraries, like <a href="https://lodash.com/">_lodash_</a>, have implementations of other types of loops.
 
-We're going to use the `while` loop to accomplish our task.  It works like this:
+
+We're going to use the `for` loop to accomplish our task.  It works like this:
 
 ````javascript
-var i = 0;
-
-while (i < 100) {
+for (var i = 0; i < 100; i++) {
     console.log(i);
-    i++;
 }
 ````
 
-The while loops checks first if a condition is `true`: `while (i < 100)`.  So while `i` is _less than_ `100`, the code block between the braces `{ //... }` will execute.
+The for loop is a great tool to repeat a `{ code block }` a specific number of times. After the keyword `for` are parentheses where you setup your for loop. Here is where you define how the loops starts, when it ends, and how you want to move on from one loop to the next. There are three parts to it:
 
-After executing the code block, the while loop loops-back to check the condition again, and will continue to loop until that condition is `false`.
+* **initialization** : `var i = 0;`
+	* a variable `i` is initialized to act as a counter to keep track of how many times we have run our loop. We start at 0.
+* **stop condition** : `i < 100;`
+	* This statement is the condition against which we check on each loop. If `i` is less than 100, the code block for the loop will execute.
+* **post condition** : `i++;`
+	* This statement _increments_ (adds 1 to) the `i` variable and is executed after each run of the loop.
+	* NOTE: `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` operators used often in code to accomplish this type of pattern.
 
-To break out of the loop, we need the condition to return `false`, and by _incrementing_ our `i` counter on each loop using `i++;`, the value of `i` increases by one on each loop.  `i++;` is shorthand for `i = i + 1;`, and you'll see the `++` or `--` operators used often in code to accomplish this type of pattern.
+Finally, we have our code block within the braces `{ }`.
 
-In fact, most loops use this exact same pattern: some counter checked against the length of a collection (an Array or Object), and incremented or decremented on each loop, depending on if you want to loop forward or backwards through a collection.
+When all of these are put together our for loop will execute the code block as long as the `i` variable is less than 100. The `i` variable starts at 0 and, because we increment it after each loop, will increase until the stop condition is no longer true - at which point the loop will stop. 
 
 So then, looking at the above snippet of code, what would be the result of running that code?
+
 
 #### Code Blocks
 
@@ -180,15 +200,12 @@ Above, the keyword `var` tells you you're creating a variable, and the assignmen
 Whereas:
 
 ````javascript
-var i = 0;
-
-while (i < 100) {
+for (var i = ; i < 100; i++) {
     console.log(i);
-    i++;
 }
 ````
 
-In this last example, the keyword `while` tells us we're opening a `while` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `while` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `while (i < 100)` is `true`.
+In this last example, the keyword `for` tells us we're opening a `for` loop, so the `{ }` braces that follow it represent the _body_ or _code block_ of the `for` loop.  The code inside these braces is the _block_ of code that will be executed each time the condition of `i < 100` is `true`.
 
 This is the same pattern with function definitions:
 
@@ -203,7 +220,7 @@ Same thing here, the keyword `function` tells us we're declaring a function, and
 
 Pay close attention to blocks of code and their `{ }` braces: you MUST always have an opening AND closing brace, otherwise the JavaScript interpreter will throw an error or your IDE will complain.
 
-Great stuff, we're going to use the `while` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
+Great stuff, we're going to use the `for` loop to draw and initialize our circles.  Before we get there, let's first declare our app's required variables.
 
 ***
 
@@ -213,7 +230,7 @@ Great stuff, we're going to use the `while` loop to draw and initialize our circ
 
 For our app, the things we'll need are:
 
-* `i`: a counter for our while loop.
+* `i`: a counter for our for loop.
 * `circle`: we will use this variable to hold the circle shape we create using the `draw` library.
 * `circles`: this variable will be an Array to hold all of our circles so we can loop through them all and update each.
 
@@ -244,45 +261,36 @@ circles = [];
 // other code...
 ````
 
+#### TODO 3: Create a for loop
 Excellent!  Now witness the power of computation:
 
-We know we want to draw 100 circles, and that the `while` loop is the way go, so let's go ahead and put the while loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `while` loop.
+We know we want to draw 100 circles, and that the `for` loop is the way go, so let's go ahead and put the for loop in place.  Once we've got that done, we'll _circle back_ to draw our circles and add each of them as children of our `view`, positioned somewhere randomly within the area of our canvas - we'll do all of this initializing within the code block of the `for` loop.
 
-We've stub out the while loop for you; it looks like this:
+We've provided an outline of the for loop for you; it looks like this:
 
 ````javascript
 // other code...
 
-while (i < 100) {
-    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+for (i = start; i < end; i++) {
+    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
     
     
     
-    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-					
-	/*
-	 * IMPORTANT NOTE: 
-	 * The statement i++; increments our counter by 1 on each loop.
-	 * If we did not do this, the conditional check of while (i < 100)
-	 * would never return false, and we would loop forever!
-	 *
-	 * Leave this as the last statement in the while loop
-	 */
-    i++;
 }
 
 // other code...
 ````
-Ok, now, _inside_ the code block of the `while` loop, we're going to initialize our `circle` shape!
+What should the start and end value be to make this loop run 100 times?
 
-#### TODO 3 : Generate a Randomized Circle
+#### TODO 4 : Generate a Randomized Circle
+Ok, now, _inside_ the code block of the `for` loop, we're going to initialize our `circle` shape!
 
-Implement the following code such that your `while` loop now looks like this:
+Implement the following code such that your `for` loop now looks like this:
 
 ````javascript
 // other code...
-while (i < 100) {
-    // TODO 3 : YOUR CODE STARTS HERE //////////////////////////
+for (i = 0; i < 100; i++) {
+    // TODO 4 : YOUR CODE STARTS HERE //////////////////////////
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2);
 					
     if (circle.alpha < .2) {
@@ -292,18 +300,6 @@ while (i < 100) {
     physikz.addRandomVelocity(circle, canvas);
     circles.push(circle);
     view.addChild(circle);
-    
-    // TODO 3 : YOUR CODE ENDS HERE ////////////////////////////
-					
-	/*
-	 * IMPORTANT NOTE: 
-	 * The statement i++; increments our counter by 1 on each loop.
-	 * If we did not do this, the conditional check of while (i < 100)
-	 * would never return false, and we would loop forever!
-	 *
-	 * Leave this as the last statement in the while loop
-	 */
-    i++;
 }
 
 // other code...
@@ -327,9 +323,9 @@ After this, we create some magic:  We pass in our newly created `circle` and the
 
     physikz.addRandomVelocity(circle, canvas);
 
-Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `while` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
+Finally, we `push` our initialized circle into the the circles Array.  `push` is part of the API of a JavaScript Array, and this is the method we use to add elements to an Array.  We do this for all our circles created within the `for` loop, so we can have all the circles collected into a list which we can loop through at a later time, and update the properties of each circle.  In doing so, we can easily update the `x` and `y` properties of 
 
-###Run the App
+### Run the App
 
 
 Alrighty, to run the app, YOU MUST open the file at:
@@ -362,11 +358,11 @@ Given this, the rest of our work will take place within the `update()` function.
 ````javascript
 function update() {
     for (var i = 0; i < circles.length; i++) {
-        // TODO 4 : Access one circle at time from the circles Array //
+        // TODO 5 : Access one circle at time from the circles Array //
         
-        // TODO 5 : Update the circles position //
+        // TODO 6 : Update the circles position //
         
-        // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+        // TODO 7 : YOUR CODE STARTS HERE //////////////////////
         
         if ( / * test for right-side * / ) {
             // your code to place circle exactly off the stage at the left-side //
@@ -378,31 +374,16 @@ function update() {
             // your code to place circle exactly off the stage at the top //
         }
         
-        // YOUR TODO 6 CODE ENDS HERE //////////////////////////
+        // YOUR TODO 7 CODE ENDS HERE //////////////////////////
     }
 }
 ````
 
-The thing to notice here is that we're utilizing another type of loop: the `for` loop.  The syntax of loop looks like this:
+The thing to notice here is that we are again using the `for` loop but in a different way. Instead of incrementing the value of i until it is less than 100 we are doing so until it is less than circles.length... It's time to do a little problem solving: 
 
-````javascript
-for (var i = 0; i < circles.length; i++) {
-    // this is the code block or body of the for loop //
-}
-````
-Following the keyword `for` the first part of the for loop within parenthesis, `(var i = 0; i < circles.length; i++)`, configures the condition for the loop.  In fact, there's three parts to it:
+All your code for TODO 5, TODO 6 and TODO 7 will go _within_ the code block of this `for` loop, so keep that in mind!
 
-* var i = 0; : This initializes a counter i to 0.
-* i < circles.length; : This statement is the condition against which we check on each loop.  If i is less than the length of the circles Array, the code block for the for loop will execute.
-* i++ : This statement increments the counter i.  We could loop backwards, in which case we'd do something like i--.
-
-Finally, we have our code block within the braces `{ }`.
-
-All your code for TODO 4, TODO 5 and TODO 6 will go _within_ the code block of this `for` loop, so keep that in mind!
-
-It's time to do a little problem solving:
-
-#### TODO 4 : Access The Current Circle from the Circles Array
+#### TODO 5 : Access The Current Circle from the Circles Array
 
 Use the Array syntax to pull out the circle at index `i`.
 
@@ -431,32 +412,36 @@ So, we know our that when we created our circles, each `circle` was pushed into 
 // other code...
 
 
-// TODO 4 : Access one circle at time from the circles Array //
+// TODO 5 : Access one circle at time from the circles Array //
 circle = ???
 
 // other code...
 ````
 
-#### TODO 5 : Update the Position of the Circle
+Why are we doing this?
+
+We are doing this so that we don't have to keep referring to an individual circle using bracket notation. Instead of circles[?] we can just use circle.
+
+#### TODO 6 : Update the Position of the Circle
 
 Okay, now we have our circle, let's use the `updatePosition()` API of the `physikz` library to update the position of the circle:
 
 ````javascript
 // other code...
 
-// TODO 5 : Update the circle's position //
+// TODO 6 : Update the circle's position //
 physikz.updatePosition(circle)
 
 // other code...
 ````
 
-#### TODO 6 : Keep The Current Circle Within the Bounds of the Canvas
+#### TODO 7 : Keep The Current Circle Within the Bounds of the Canvas
 
-We need to check each circle's position as we loop through the Array of `circles` to keep the circles coming back onto the `canvas`.
+We need to check each circle's x and y position as we loop through the Array of `circles` to keep the circles inside the `canvas` (the screen).
 
-So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border.
+So, if a circle leaves the `canvas` along the _bottom_ border, we need to place the circle fully off the `canvas` at the top border. We can do this by changing the circle's y property like so: `circle.y = newPositionY;` where `newPositionY` is the coordinate where you want the circle's new y location to be.
 
-So, write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
+Write a test for each border of the canvas that checks if the circle has fully exited the canvas by _that_ border. Using a chain of `if`, `else-if` statements, you'll need one test for each border, right-side, left-side, top, and bottom. If a circle leaves the canvas by one of its borders, you need to place the circle fully off the canvas at the opposite border.  Dig?
 
 The best way to start this is to hack away, testing one border at a time!
 
@@ -489,7 +474,7 @@ if (circle.x > canvas.width + circle.radius) {
 The full stub code for our `if`, `else-if` statements is here:
 
 ````javascript
-// TODO 6 : YOUR CODE STARTS HERE //////////////////////
+// TODO 7 : YOUR CODE STARTS HERE //////////////////////
 
 if ( / * test for right-side * / ) {
     // your code to place circle exactly off the stage at the left-side //
@@ -503,7 +488,7 @@ if ( / * test for top * / ) {
     // your code to place circle exactly off the stage at the top //
 }
 
-// YOUR TODO 6 CODE ENDS HERE //////////////////////////
+// YOUR TODO 7 CODE ENDS HERE //////////////////////////
 ````
 
 ## Just Code TODOs

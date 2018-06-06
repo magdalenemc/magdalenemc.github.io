@@ -22,21 +22,26 @@
 
     /* global objectValues */
     QUnit.test( "objectValues() : Should take an object and return its values in an array", function( assert ) {
-      var data = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
-
-      assert.deepEqual( objectValues(data), ["one","two","crayons","dangle"]);
+      var objectOne = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
+      var objectTwo = {c: "three", d: "four", crayons: "ponies", dangle: "dingle"};
+      assert.deepEqual(objectValues(objectOne), ["one","two","crayons","dangle"]);
+      assert.deepEqual(objectValues(objectTwo), ["three","four","ponies","dingle"]);
     });
 
     /* global keysToString */
     QUnit.test("keysToString() : Should take an object and return all its keys in a string each separated with a space", function(assert){
-      var data = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
-      assert.equal(keysToString(data), "a b ponies dingle");
+      var objectOne = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
+      var objectTwo = {c: "three", d: "four", crayons: "ponies", dangle: "dingle"};
+      assert.equal(keysToString(objectOne), "a b ponies dingle");
+      assert.equal(keysToString(objectTwo), "c d crayons dangle");
     });
 
     /* global valuesToString */
     QUnit.test("valuesToString() : Should take an object and return all its string values in a string each separated with a space", function(assert){
-      var data = {a: "one", boolean: false, b: "two", ponies: "crayons", something: {}, dingle: "dangle"};
-      assert.equal(valuesToString(data), "one two crayons dangle");
+      var objectOne = {a: "one", b: "two", ponies: "crayons", something: {}, dingle: "dangle"};
+      var objectTwo = {c: "three", boolean: false, d: "four", crayons: "ponies", dangle: "dingle"};
+      assert.equal(valuesToString(objectOne), "one two crayons dangle");
+      assert.equal(valuesToString(objectTwo), "three four ponies dingle");
     });
 
     /* global arrayOrObject  */
@@ -138,9 +143,10 @@
 
     /* global dedup */
     QUnit.test( "dedup() : Should take an array and return an array with all the duplicates removed", function( assert ) {
-      var data = [1,2,2,2,3,4,5,5,5,5,"a","b","b","b","c"];
-
-      assert.deepEqual( dedup(data), [1,2,3,4,5,"a","b","c"]);
+      var arrayOne = [1,2,2,2,3,4,5,5,5,5,"a","b","b","b","c"];
+      var arrayTwo = ["hello", "hello", "hello", "hello", "hello", "world", "hello", "world", "world", "world"];
+      assert.deepEqual(dedup(arrayOne), [1,2,3,4,5,"a","b","c"]);
+      assert.deepEqual(dedup(arrayTwo), ["hello", "world"]);
     });
 
   })();

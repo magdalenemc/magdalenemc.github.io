@@ -1,13 +1,16 @@
 {
   "name": "matchy",
   "version": "1.0.0",
+  "private": true,
   "description": "An exercise in creating and accessing data structures",
   "main": "data.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "istanbul cover _mocha -- test/ -R spec"
+    "pretest": "npm install",
+    "test": "mocha ./test/index.spec.js || :",
+    "posttest": "rm -rf ./test ./node_modules"
   },
   "repository": {
     "type": "git",

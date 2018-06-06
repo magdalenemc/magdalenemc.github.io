@@ -98,8 +98,8 @@ Imagine that our website has a profile page for each animal. On this profile pag
  2. [ ] Write a comment in your code that explains why you chose this data structure.
  3. [ ] Create a variable called `friends` and assign it to the data structure that you chose.
  4. [ ] Take a look at the documentation for `Math.random` here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
- 5. [ ] Write a function that takes our `animals` array and returns a random element using `Math.random`
- 6. [ ] Using this function that you just created, get a random animal and add its `name` to `friends`.
+ 5. [ ] Write a function called `getRandom` that takes our `animals` array and returns the `index` of a random element using `Math.random`
+ 6. [ ] Using a random index from this function that you just created, get a random animal and add its `name` to `friends`.
  7. [ ] `console.log` `friends`.
  8. [ ] add `friends` as a **property** named `friends` on one of the animals in `animals`
  9. [ ] `console.log` your work.
@@ -124,7 +124,7 @@ These Functions will pass in all needed parameters, meaning, we will not reach i
  3. Use the search bar at the top of the page to make sure your function works.
 
 ## Step 2 - Replace
- 1. Write a function called `replace` with a signature of `replace(animals, name, replacment) { //... } ` that:
+ 1. Write a function called `replace` with a signature of `replace(animals, name, replacement) { //... } ` that:
    - Takes 3 parameters, an Array of animals, a name of an animal on which to perform a search, and an Object that represents the replacement animal.
    - If an animal with that name exists within the `animals` Array, replace it's entire Object with the replacement Object.
    - Otherwise do nothing.
@@ -149,3 +149,20 @@ This is called **data validation** and it's extremely important in web developme
  
 ## Step 5 - Break
 **Step back and think about how far you've come!!** We are doing really hard stuff and if you've gotten here, you get it! This is awesome! It means you are well on your way to becoming a **pro web developer**. SWEET!
+
+# Part 3
+**Test and submit your work**
+
+Now you're done! Time to submit your great work to Greenlight to get that sweet, sweet green light.
+
+## Grade and submit
+ 1. [ ] Open up a new `bash` terminal
+ 2. [ ] Run the command `os test` in the bash terminal
+   - Select your class
+   - Select your Matchy
+ 3. [ ] Make sure that you are passing all tests, or fix any failing tests
+ 4. [ ] When all your tests pass, run the command `os submit`
+   - Select your class
+   - Select your Matchy
+ 5. [ ] Check Greenlight to ensure your grade updated correctly
+ 6. [ ] You're done! 
